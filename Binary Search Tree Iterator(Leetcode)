@@ -1,0 +1,28 @@
+class BSTIterator {
+
+    private Queue<TreeNode> queue;
+    private TreeNode root;
+
+    public BSTIterator(TreeNode root) {
+        this.root = root;
+        this.queue = new LinkedList<>();
+        inorderTraverseAndBuildQueue(root);
+    }
+
+    public int next() {
+        return queue.poll().val;
+    }
+
+    public boolean hasNext() {
+        return !queue.isEmpty();
+    }
+
+    private void inorderTraverseAndBuildQueue(TreeNode root) {
+        if(root == null) return;
+
+        inorderTraverseAndBuildQueue(root.left);
+        queue.add(root);
+        inorderTraverseAndBuildQueue(root.right);
+    }
+}
+https://leetcode.com/problems/binary-search-tree-iterator/
