@@ -1,0 +1,71 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    ArrayList<Integer> t1=new ArrayList<Integer>();
+     ArrayList<Integer> t2=new ArrayList<Integer>();
+     ArrayList<Integer>  rslt=new ArrayList<Integer>();
+    
+    public List<Integer> getAllElements(TreeNode a, TreeNode b) {
+           int i=0,j=0;
+        if(a==null && b==null)
+            return rslt;
+        if(a!=null && b==null)
+        {
+            inorder(a,t1);
+            return t1;
+        }
+         if(b!=null && a==null)
+        {
+            inorder(b,t2);
+            return t2;
+        }
+        else
+        {
+            inorder(a,t1);
+            inorder(b,t2);
+            while(i<t1.size()&& j<t2.size())
+            {
+                if(t1.get(i)<t2.get(j))
+                {
+                    rslt.add(t1.get(i));++i;
+                }
+                else{
+                    rslt.add(t2.get(j));++j;
+                }
+            }
+            while(i<t1.size())
+            {rslt.add(t1.get(i));++i;}
+            while(j<t2.size()){
+                 rslt.add(t2.get(j));++j;
+                
+            }
+        }
+        return rslt;
+        
+        
+    }
+  public ArrayList<Integer> inorder( TreeNode root,ArrayList<Integer>t)
+    { if(root==null)
+        return t;
+      inorder(root.left,t);
+      t.add(root.val);
+      inorder(root.right,t);
+      return t;
+  }
+}
+
+
+https://leetcode.com/problems/all-elements-in-two-binary-search-trees/
