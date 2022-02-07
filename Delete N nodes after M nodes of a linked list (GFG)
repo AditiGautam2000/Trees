@@ -1,0 +1,36 @@
+class Solution
+{
+    static void linkdelete(Node head, int m, int n)
+    {  Node no=head;
+        alter(head,m,n);
+
+   }
+
+ static void alter(Node root,int m,int n)
+ {
+     int c=1;
+     while(root!=null)
+     {
+         if(c<m)
+        { root=root.next;
+        ++c;}
+        else
+        {
+            c=0;
+            root.next=delete(root,n);
+        }
+     }
+ }
+  static Node delete(Node root,int n )
+     { while(n>=0 && root!=null)
+     { root=root.next;
+         --n;
+     }
+     return root;
+         
+     }
+}
+
+
+
+https://practice.geeksforgeeks.org/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/1/#
