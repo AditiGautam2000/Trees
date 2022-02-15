@@ -1,0 +1,41 @@
+class Tree{
+    // return the head of the DLL and remove those node from the tree as well.
+    Node head;
+    public Node convertToDLL(Node root)
+    {   
+         Node curr=null;
+         int f=1;
+         Node ans= null;
+        inorder(root,ans,curr);
+        return ans;
+        
+    }
+    
+   public Node inorder(Node root,Node ans,Node curr)
+   {       
+           if(root==null) return null;
+           
+           if(root.left==null && root.right==null)
+           {
+               if(ans==null)
+               {  
+                   ans=new Node(root.data);
+                   curr=ans; 
+               }
+              else{ 
+               curr.right=new Node(root.data);
+               curr.right.left=curr;
+               curr=curr.right;}
+               return null;
+              
+                 }
+                 
+          root.left= inorder(root.left,ans,curr);
+           root.right= inorder(root.right,ans,curr);
+           
+          return ans;
+          
+      }
+    
+}
+
