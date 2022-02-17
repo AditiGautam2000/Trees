@@ -1,0 +1,40 @@
+class Solution
+{ 
+    Node head,tail;
+    
+    public void  insertAtEnd(Node newNode){
+        if(newNode==null) return;
+        if(head==null && tail==null){
+            head=newNode;
+            tail=newNode;
+            head.left=tail;
+            tail.right=head;
+        }
+        else{
+            newNode.right=tail.right;
+            tail.right=newNode;
+            head.left=newNode;
+            newNode.left=tail;
+            tail=newNode;
+        
+        }
+    }
+    
+    public void inOrder(Node root){
+        if(root==null) return;
+        inOrder(root.left);
+        Node right = root.right;
+        insertAtEnd(root);
+        inOrder(right);
+        
+	        
+    }
+    
+    Node bTreeToClist(Node root)
+    {
+        inOrder(root);
+        return head;
+    }
+    
+}
+    
