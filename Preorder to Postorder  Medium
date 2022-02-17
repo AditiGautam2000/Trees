@@ -1,0 +1,59 @@
+//User function Template for Java
+
+
+//Function that constructs BST from its preorder traversal.
+public static Node constructTree(int a[], int size) 
+{    Node root=null;
+    for(int i=0;i<size;i++)
+    {
+        root=insert(root,a[i]);
+    }
+     return root;   
+        
+    }
+    
+    public static Node insert(Node root,int n)
+    {
+        if(root==null)
+        return new Node(n);
+        
+        if(n<root.data)
+        root.left=insert(root.left,n);
+        else
+        root.right=insert(root.right,n);
+        
+        return root;
+    }
+
+
+// { Driver Code Starts.
+
+
+public static 	void printInorder(Node node) { 
+		if (node == null) { 
+			return; 
+		} 
+		printInorder(node.left); 
+		System.out.print(node.data + " "); 
+		printInorder(node.right); 
+	} 
+	
+public static 	void printPostorder(Node node) { 
+		if (node == null) { 
+			return; 
+		} 
+		printPostorder(node.left); 
+		printPostorder(node.right);
+		System.out.print(node.data + " "); 
+	} 
+	
+public static 	void printPreorder(Node node) { 
+		if (node == null) { 
+			return; 
+		} 
+		System.out.print(node.data + " "); 
+		printPreorder(node.left); 
+		printPreorder(node.right);
+	} 
+
+} 
