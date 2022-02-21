@@ -1,0 +1,33 @@
+class Solution
+{
+    static void inorder(Node root,ArrayList<Integer> al){
+       if(root==null)
+          return;
+       inorder(root.left,al);
+       al.add(root.data);
+       inorder(root.right,al);
+       return;
+   }
+   static int i=0;
+   static void sol(Node root,ArrayList<Integer> al)
+{
+  if(root==null) 
+     return ;
+sol(root.left,al);
+sol(root.right,al);
+ root.data=al.get(0);
+ al.remove(al.get(0));
+return;
+}
+   public static void convertToMaxHeapUtil(Node root)
+   {
+       //code here
+       if(root==null)
+          return ;
+          
+          ArrayList<Integer> al = new ArrayList<>();
+          inorder(root,al);
+          sol(root,al);
+          return;
+   }
+}
