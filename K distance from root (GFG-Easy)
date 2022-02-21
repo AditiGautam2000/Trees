@@ -1,0 +1,22 @@
+class Tree
+{
+     // Recursive function to print right view of a binary tree.
+    int level=0;
+     ArrayList<Integer> Kdistance(Node root, int k)
+     { ArrayList<Integer> a=new ArrayList<Integer>();
+         
+         list(a,root,k);
+         return a;
+          
+     }
+     void list( ArrayList<Integer> a,Node root,int k)
+     {
+         if(root==null)  return ;
+          if(k==0) { a.add(root.data); }
+         
+          list(a,root.left,k-1);
+          list(a,root.right,k-1);
+     }
+}
+
+https://practice.geeksforgeeks.org/problems/k-distance-from-root/1/?page=2&status[]=unsolved&category[]=Tree&category[]=tree&sortBy=submissions#
